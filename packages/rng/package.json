@@ -1,0 +1,49 @@
+{
+  "name": "@taipeistudio/gamekit-rng",
+  "version": "0.1.0",
+  "description": "Seeded, serialisable random numbers: the state lives in your save file.",
+  "keywords": [
+    "gamekit",
+    "gamedev",
+    "typescript",
+    "random",
+    "seeded",
+    "prng",
+    "mulberry32",
+    "deterministic"
+  ],
+  "author": {
+    "name": "Rosdyana Kusuma",
+    "email": "rosdyana.kusuma@gmail.com",
+    "url": "https://github.com/rosdyana"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/rosdyana/gamekit/tree/main/packages/rng#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosdyana/gamekit.git",
+    "directory": "packages/rng"
+  },
+  "bugs": {
+    "url": "https://github.com/rosdyana/gamekit/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

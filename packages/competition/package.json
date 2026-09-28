@@ -1,0 +1,51 @@
+{
+  "name": "@taipeistudio/gamekit-competition",
+  "version": "0.2.0",
+  "description": "Sports competition engine: brackets, leagues, groups, two-legged ties, rolling rankings, Elo.",
+  "keywords": [
+    "gamekit",
+    "gamedev",
+    "typescript",
+    "tournament",
+    "bracket",
+    "league",
+    "round-robin",
+    "elo",
+    "football",
+    "sports"
+  ],
+  "author": {
+    "name": "Rosdyana Kusuma",
+    "email": "rosdyana.kusuma@gmail.com",
+    "url": "https://github.com/rosdyana"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/rosdyana/gamekit/tree/main/packages/competition#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosdyana/gamekit.git",
+    "directory": "packages/competition"
+  },
+  "bugs": {
+    "url": "https://github.com/rosdyana/gamekit/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "@taipeistudio/gamekit-retro-ui",
+  "version": "0.1.0",
+  "description": "Retro pixel-style Preact UI kit: panels, buttons, meters, tabs, modals, toasts, timing bar.",
+  "keywords": [
+    "gamekit",
+    "gamedev",
+    "typescript",
+    "preact",
+    "ui-kit",
+    "pixel",
+    "retro",
+    "components"
+  ],
+  "author": {
+    "name": "Rosdyana Kusuma",
+    "email": "rosdyana.kusuma@gmail.com",
+    "url": "https://github.com/rosdyana"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/rosdyana/gamekit/tree/main/packages/retro-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosdyana/gamekit.git",
+    "directory": "packages/retro-ui"
+  },
+  "bugs": {
+    "url": "https://github.com/rosdyana/gamekit/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "style.css",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./style.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

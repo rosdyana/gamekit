@@ -1,0 +1,40 @@
+{
+  "name": "gamekit",
+  "private": true,
+  "description": "Reusable engines for our games: rng, saves, retro UI, competitions, life-sim events.",
+  "keywords": [
+    "gamedev",
+    "typescript",
+    "game-engine"
+  ],
+  "author": {
+    "name": "Rosdyana Kusuma",
+    "email": "rosdyana.kusuma@gmail.com",
+    "url": "https://github.com/rosdyana"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/rosdyana/gamekit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosdyana/gamekit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rosdyana/gamekit/issues"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "vitest run",
+    "check": "tsc -p tsconfig.json && vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "fake-indexeddb": "^6.0.0",
+    "jsdom": "^25.0.0",
+    "preact": "^10.29.0",
+    "typescript": "~5.7.3",
+    "vitest": "^3.2.0"
+  }
+}

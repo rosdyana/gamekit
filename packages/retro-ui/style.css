@@ -1,0 +1,677 @@
+/* @taipeistudio/gamekit-retro-ui: retro pixel UI kit. Put class="rui" on <body> (or any root).
+   Rules are scoped with :where(.rui) so they add no specificity: your own
+   stylesheet (loaded after this one) always wins. */
+
+:where(.rui) {
+  --ink: #f4ecd0;
+  --dim: #9c98b8;
+  --bg: #0b0b16;
+  --panel: #1b1a33;
+  --edge: #f4ecd0;
+  --shade: #07070f;
+  --gold: #ffd23f;
+  --red: #e4572e;
+  --green: #3ec46d;
+  --blue: #4ea3ff;
+}
+
+:where(.rui) *, :where(.rui) *::before, :where(.rui) *::after {
+  box-sizing: border-box;
+}
+
+:where(.rui) {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--rui-font, "Press Start 2P", monospace);
+  -webkit-font-smoothing: none;
+}
+
+:where(.rui) .stage {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  container-type: size;
+  font-size: 1.35cqw;
+  user-select: none;
+}
+
+:where(.rui) .hidden {
+  display: none !important;
+}
+
+:where(.rui) .panel {
+  background: var(--panel);
+  border: 0.25cqw solid var(--edge);
+  box-shadow:
+    0 0 0 0.25cqw var(--shade),
+    inset 0 -0.35cqw 0 rgba(0, 0, 0, 0.35);
+}
+
+:where(.rui) kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0.25em 0.3em;
+  margin-right: 0.5em;
+  background: var(--ink);
+  color: var(--bg);
+  font: inherit;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+:where(.rui) button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:where(.rui) .btn {
+  padding: 0.8em 1.2em;
+  background: var(--red);
+  border: 0.25cqw solid var(--ink);
+  box-shadow: 0 0.35cqw 0 var(--shade);
+}
+
+:where(.rui) .btn:hover {
+  filter: brightness(1.15);
+}
+
+:where(.rui) .btn:active {
+  transform: translateY(0.3cqw);
+  box-shadow: none;
+}
+
+:where(.rui) .btn.alt {
+  background: #34325a;
+}
+
+:where(.rui) .row {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 0.7em;
+}
+
+:where(.rui) .tag {
+  font-size: 0.7em;
+  color: var(--dim);
+}
+
+:where(.rui) .track {
+  position: relative;
+  height: 1.8em;
+  background: var(--shade);
+  overflow: hidden;
+}
+
+:where(.rui) .track .good {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #2f8f55;
+}
+
+:where(.rui) .track .perfect {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--gold);
+}
+
+:where(.rui) .track .marker {
+  position: absolute;
+  top: -0.2em;
+  bottom: -0.2em;
+  width: 0.4em;
+  margin-left: -0.2em;
+  background: var(--ink);
+  box-shadow: 0 0 0.5em var(--ink);
+}
+
+:where(.rui) .timing-hint {
+  margin-top: 0.6em;
+  text-align: center;
+  font-size: 0.7em;
+  color: var(--dim);
+  animation: blink 0.8s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+:where(.rui) .screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1cqw;
+  padding: 1.4cqw;
+  overflow: hidden;
+}
+
+:where(.rui) .screen.center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--bg);
+}
+
+:where(.rui) .screen.narrow {
+  align-items: center;
+  justify-content: center;
+}
+
+:where(.rui) .screen.narrow > .ui-panel {
+  width: min(96%, 74cqw);
+  max-height: 100%;
+  overflow: auto;
+}
+
+:where(.rui) h1, :where(.rui) h2, :where(.rui) h3, :where(.rui) h4 {
+  margin: 0;
+  font-weight: normal;
+}
+
+:where(.rui) h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.6em;
+}
+
+:where(.rui) h4 {
+  font-size: 0.8em;
+  color: var(--gold);
+  margin: 0.4em 0;
+}
+
+:where(.rui) p {
+  margin: 0.4em 0;
+  line-height: 1.7;
+}
+
+:where(.rui) .muted {
+  color: var(--dim);
+}
+
+:where(.rui) .small {
+  font-size: 0.7em;
+}
+
+:where(.rui) .big {
+  font-size: 1.3em;
+}
+
+:where(.rui) .gold {
+  color: var(--gold);
+}
+
+:where(.rui) .green {
+  color: var(--green);
+}
+
+:where(.rui) .red {
+  color: var(--red);
+}
+
+:where(.rui) .strike {
+  text-decoration: line-through;
+  color: var(--dim);
+}
+
+:where(.rui) .right {
+  text-align: right;
+}
+
+:where(.rui) .row {
+  display: flex;
+  align-items: center;
+}
+
+:where(.rui) .column {
+  display: flex;
+  flex-direction: column;
+}
+
+:where(.rui) .gap {
+  gap: 0.6em;
+}
+
+:where(.rui) .wrap {
+  flex-wrap: wrap;
+}
+
+:where(.rui) .blink {
+  animation: blink 0.8s steps(2) infinite;
+}
+
+:where(.rui) .empty {
+  color: var(--dim);
+  font-size: 0.8em;
+  padding: 0.6em 0;
+}
+
+:where(.rui) .ui-panel {
+  padding: 0.9em 1em;
+  min-height: 0;
+  overflow: auto;
+}
+
+:where(.rui) .panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1em;
+  margin-bottom: 0.7em;
+}
+
+:where(.rui) .panel-head h3 {
+  font-size: 0.9em;
+  color: var(--gold);
+}
+
+:where(.rui) .btn {
+  font-size: 0.8em;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.4;
+}
+
+:where(.rui) .btn small {
+  display: block;
+  font-size: 0.7em;
+  color: inherit;
+  opacity: 0.8;
+  margin-top: 0.3em;
+}
+
+:where(.rui) .btn.small {
+  font-size: 0.65em;
+  padding: 0.5em 0.8em;
+}
+
+:where(.rui) .btn.primary {
+  background: var(--red);
+}
+
+:where(.rui) .btn.alt {
+  background: #34325a;
+}
+
+:where(.rui) .btn.danger {
+  background: #8d1f1f;
+}
+
+:where(.rui) .btn.ghost {
+  background: transparent;
+  border-color: #4a4780;
+  box-shadow: none;
+}
+
+:where(.rui) .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+  transform: none;
+}
+
+:where(.rui) .btn:focus-visible, :where(.rui) .chip:focus-visible, :where(.rui) .card-btn:focus-visible, :where(.rui) .tab:focus-visible {
+  outline: 0.25cqw solid var(--gold);
+  outline-offset: 0.15cqw;
+}
+
+:where(.rui) .chip {
+  font: inherit;
+  font-size: 0.65em;
+  padding: 0.55em 0.8em;
+  background: #2b2950;
+  border: 0.2cqw solid #4a4780;
+  color: var(--ink);
+  text-transform: capitalize;
+}
+
+:where(.rui) .chip.on {
+  background: var(--blue);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+:where(.rui) .choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+:where(.rui) .card-btn {
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  padding: 0.7em;
+  text-align: left;
+  background: #242247;
+  border: 0.2cqw solid #4a4780;
+  color: var(--ink);
+  font-size: 0.7em;
+  line-height: 1.5;
+}
+
+:where(.rui) .card-btn small {
+  font-size: 0.8em;
+  color: var(--dim);
+}
+
+:where(.rui) .card-btn small.gold {
+  color: var(--gold);
+}
+
+:where(.rui) .card-btn small.green {
+  color: var(--green);
+}
+
+:where(.rui) .card-btn small.red {
+  color: var(--red);
+}
+
+:where(.rui) .card-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+}
+
+:where(.rui) .card-btn.on {
+  border-color: var(--gold);
+  background: #33305e;
+  box-shadow: inset 0 0 0 0.15cqw var(--gold);
+}
+
+:where(.rui) .card-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+:where(.rui) .cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6em;
+}
+
+:where(.rui) .cards.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+:where(.rui) .swatches {
+  display: flex;
+  gap: 0.4em;
+  flex-wrap: wrap;
+}
+
+:where(.rui) .swatch {
+  width: 2em;
+  height: 2em;
+  border: 0.2cqw solid #4a4780;
+  cursor: pointer;
+}
+
+:where(.rui) .swatch.on {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 0.2cqw var(--gold);
+}
+
+:where(.rui) .field {
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  align-items: center;
+  gap: 0.8em;
+  margin: 0.55em 0;
+  font-size: 0.8em;
+}
+
+:where(.rui) .field > span {
+  color: var(--dim);
+  font-size: 0.85em;
+}
+
+:where(.rui) input[type="text"], :where(.rui) input:not([type]) {
+  font: inherit;
+  color: var(--ink);
+  background: var(--shade);
+  border: 0.2cqw solid #4a4780;
+  padding: 0.6em;
+}
+
+:where(.rui) input:focus {
+  outline: 0.2cqw solid var(--gold);
+}
+
+:where(.rui) input[type="range"] {
+  accent-color: var(--gold);
+}
+
+:where(.rui) .meter {
+  height: 0.8em;
+  background: var(--shade);
+  min-width: 6em;
+  position: relative;
+}
+
+:where(.rui) .meter i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  transition: width 0.3s steps(6);
+}
+
+:where(.rui) .meter i.green {
+  background: var(--green);
+}
+
+:where(.rui) .meter i.gold {
+  background: var(--gold);
+}
+
+:where(.rui) .meter i.red {
+  background: var(--red);
+}
+
+:where(.rui) .meter i.blue {
+  background: var(--blue);
+}
+
+:where(.rui) .stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  font-size: 0.75em;
+}
+
+:where(.rui) .stat > span {
+  color: var(--dim);
+  font-size: 0.75em;
+}
+
+:where(.rui) .stat.bad b {
+  color: var(--red);
+}
+
+:where(.rui) .tag {
+  display: inline-block;
+  font-size: 0.6em;
+  padding: 0.3em 0.5em;
+  background: #34325a;
+  margin-left: 0.4em;
+  vertical-align: middle;
+}
+
+:where(.rui) .tag.red {
+  background: var(--red);
+}
+
+:where(.rui) .tag.green {
+  background: #1f7a44;
+}
+
+:where(.rui) .tag.gold {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+:where(.rui) .table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7em;
+}
+
+:where(.rui) .table td {
+  padding: 0.45em 0.5em;
+  border-bottom: 0.1cqw solid #2b2950;
+  vertical-align: middle;
+}
+
+:where(.rui) .table tr.entered td {
+  background: rgba(255, 210, 63, 0.08);
+}
+
+:where(.rui) .table tr.now td:first-child {
+  color: var(--gold);
+}
+
+:where(.rui) .modal-back {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 12, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+:where(.rui) .modal {
+  width: min(92%, 52cqw);
+  padding: 1.4em;
+  max-height: 90%;
+  overflow: auto;
+}
+
+:where(.rui) .modal-actions {
+  display: flex;
+  gap: 0.8em;
+  margin-top: 1em;
+}
+
+:where(.rui) .modal-actions.column {
+  flex-direction: column;
+}
+
+:where(.rui) .toasts {
+  position: absolute;
+  right: 1.2cqw;
+  bottom: 1.2cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  z-index: 30;
+  pointer-events: none;
+}
+
+:where(.rui) .toast {
+  font-size: 0.65em;
+  padding: 0.7em 1em;
+  background: var(--panel);
+  border: 0.2cqw solid var(--ink);
+  max-width: 36cqw;
+  line-height: 1.5;
+  animation: toast 0.25s steps(3);
+}
+
+:where(.rui) .toast.good {
+  border-color: var(--green);
+}
+
+:where(.rui) .toast.bad {
+  border-color: var(--red);
+}
+
+@keyframes toast {
+  from {
+    transform: translateY(1em);
+    opacity: 0;
+  }
+}
+
+:where(.rui) .tabs {
+  display: flex;
+  gap: 0.3em;
+  flex-wrap: wrap;
+}
+
+:where(.rui) .tab {
+  font: inherit;
+  font-size: 0.65em;
+  padding: 0.6em 0.9em;
+  background: #1b1a33;
+  color: var(--dim);
+  border: 0.2cqw solid #34325a;
+  position: relative;
+  cursor: pointer;
+}
+
+:where(.rui) .tab.on {
+  color: var(--bg);
+  background: var(--gold);
+  border-color: var(--ink);
+}
+
+:where(.rui) .badge {
+  position: absolute;
+  top: -0.6em;
+  right: -0.5em;
+  background: var(--red);
+  color: var(--ink);
+  font-style: normal;
+  font-size: 0.8em;
+  padding: 0.15em 0.35em;
+}
+
+:where(.rui) .tab-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+:where(.rui) .rotate-hint {
+  display: none;
+}
+
+@media (orientation: portrait) and (max-width: 700px) {:where(.rui) .rotate-hint {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--gold);
+    font-size: 14px;
+    padding: 24px;
+    text-align: center;
+    z-index: 100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {:where(.rui) *, :where(.rui) *::before, :where(.rui) *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:where(.rui) .stat {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  border-bottom: 0.1cqw dashed #34325a;
+  padding: 0.35em 0;
+}
+
+:where(.rui) .stat > span {
+  font-size: 0.85em;
+}
+
