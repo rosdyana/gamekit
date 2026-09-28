@@ -1,6 +1,7 @@
 /**
  * Framework-free timing bar: a marker sweeps across; press inside the gold
- * (perfect) or green (good) zone. Works with keyboard (Space/Enter) and taps.
+ * (perfect) or green (good) zone. Works with keyboard (Space/Enter) and taps;
+ * by default a tap anywhere on the page counts, since the bar is a small target on phones.
  */
 export type TimingGrade = "perfect" | "good" | "poor" | "whiff";
 
@@ -13,6 +14,18 @@ export interface TimingWindow {
   /** Centre of the sweet spot (default 0.72). */
   target?: number;
 }
+
+export interface TimingBarOptions {
+  /** Hint under the bar (default "PRESS SPACE"). */
+  hint?: string;
+  /** Hint on touch screens (`pointer: coarse`); defaults to "TAP ANYWHERE" with `tapAnywhere`, else `hint`. */
+  touchHint?: string;
+  /** Any tap on the page counts as the press, not only taps on the bar (default true). */
+  tapAnywhere?: boolean;
+}
+
+/** Taps on these never count as the press in `tapAnywhere` mode. */
+const TAP_IGNORE = "button, a, input, select, textarea, label, [data-timing-ignore]";
 
 export const DEFAULT_TARGET = 0.72;
 
@@ -36,9 +49,16 @@ export class TimingBar {
   private readonly good: HTMLElement;
   private readonly perfect: HTMLElement;
   private readonly marker: HTMLElement;
+  private readonly tapAnywhere: boolean;
   private cancelFn: (() => void) | null = null;
 
-  constructor(parent: HTMLElement, hint = "PRESS SPACE") {
+  constructor(parent: HTMLElement, opts: string | TimingBarOptions = {}) {
+    const o = typeof opts === "string" ? { hint: opts } : opts;
+    this.tapAnywhere = o.tapAnywhere ?? true;
+    const touch = typeof matchMedia === "function" && matchMedia("(pointer: coarse)").matches;
+    const hint = touch
+      ? (o.touchHint ?? (this.tapAnywhere ? "TAP ANYWHERE" : (o.hint ?? "TAP")))
+      : (o.hint ?? "PRESS SPACE");
     this.el = document.createElement("div");
     this.el.className = "timing panel hidden";
     this.el.innerHTML = `<div class="track"><div class="good"></div><div class="perfect"></div><div class="marker"></div></div><div class="timing-hint">${hint}</div>`;
@@ -67,11 +87,21 @@ export class TimingBar {
         cancelAnimationFrame(raf);
         this.cancelFn = null;
         window.removeEventListener("keydown", onKey);
-        this.el.removeEventListener("pointerdown", onPress);
+        window.removeEventListener("pointerdown", onPointer);
         setTimeout(() => this.el.classList.add("hidden"), 120);
         resolve(g);
       };
       const onPress = () => done(gradeFromOffset(pos - target, w));
+      const onPointer = (e: PointerEvent) => {
+        // Ignore the tap that started this run (run() called from a pointerdown handler).
+        if (e.timeStamp < started) return;
+        const t = e.target as Element | null;
+        if (!(t && this.el.contains(t))) {
+          if (!this.tapAnywhere || t?.closest?.(TAP_IGNORE)) return;
+        }
+        e.preventDefault();
+        onPress();
+      };
       const onKey = (e: KeyboardEvent) => {
         if (e.code === "Space" || e.code === "Enter") {
           e.preventDefault();
@@ -86,7 +116,7 @@ export class TimingBar {
       };
       this.cancelFn = () => done(null);
       window.addEventListener("keydown", onKey);
-      this.el.addEventListener("pointerdown", onPress);
+      window.addEventListener("pointerdown", onPointer);
       raf = requestAnimationFrame(tick);
     });
   }

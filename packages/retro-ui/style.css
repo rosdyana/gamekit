@@ -128,6 +128,21 @@
   box-shadow: 0 0 0.5em var(--ink);
 }
 
+:where(.rui) .timing {
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch screens: a taller track, easier to read under a thumb. */
+@media (pointer: coarse) {
+  :where(.rui) .timing .track {
+    height: 3.2em;
+  }
+}
+
 :where(.rui) .timing-hint {
   margin-top: 0.6em;
   text-align: center;

@@ -1,6 +1,6 @@
 {
   "name": "@taipeistudio/gamekit-retro-ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Retro pixel-style Preact UI kit: panels, buttons, meters, tabs, modals, toasts, timing bar.",
   "keywords": [
     "gamekit",

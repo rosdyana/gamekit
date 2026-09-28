@@ -77,4 +77,38 @@ describe("timing", () => {
     bar.destroy();
     expect(document.querySelector(".timing")).toBeNull();
   });
+
+  const tap = (el: Element) =>
+    el.dispatchEvent(new MouseEvent("pointerdown", { bubbles: true, cancelable: true }));
+
+  it("a tap anywhere on the page presses, but not on buttons", async () => {
+    const bar = new TimingBar(document.body);
+    const btn = document.createElement("button");
+    const field = document.createElement("div");
+    document.body.append(btn, field);
+    const p = bar.run(w);
+    let settled = false;
+    void p.then(() => (settled = true));
+    tap(btn);
+    await Promise.resolve();
+    expect(settled).toBe(false);
+    tap(field);
+    expect(await p).toBe("whiff"); // pressed at the very start: far from target
+    bar.destroy();
+  });
+
+  it("tapAnywhere: false only takes taps on the bar", async () => {
+    const bar = new TimingBar(document.body, { tapAnywhere: false });
+    const field = document.createElement("div");
+    document.body.append(field);
+    const p = bar.run(w);
+    tap(field);
+    let settled = false;
+    void p.then(() => (settled = true));
+    await Promise.resolve();
+    expect(settled).toBe(false);
+    tap(bar.el);
+    expect(await p).toBe("whiff");
+    bar.destroy();
+  });
 });

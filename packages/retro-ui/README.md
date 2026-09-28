@@ -26,6 +26,11 @@ const bar = new TimingBar(document.querySelector("#hud")!);
 const grade = await bar.run({ perfect: 0.1, good: 0.28, duration: 1 }); // "perfect" | "good" | "poor" | "whiff" | null
 ```
 
+- `TimingBar` takes Space/Enter or a tap. By default a tap **anywhere on the page** counts
+  (taps on buttons, links, form fields and `[data-timing-ignore]` don't), since the bar is a small
+  target on phones. Options: `new TimingBar(parent, { hint, touchHint, tapAnywhere: false })`;
+  a plain string is still accepted as the hint. Touch screens show "TAP ANYWHERE" and a taller track.
+
 - Theme tokens (`--ink`, `--bg`, `--panel`, `--gold`, `--red`, `--green`, `--blue`…) are CSS
   variables on `.rui`; override them in your own CSS. Font: `--rui-font` (default
   "Press Start 2P"; bundle it with `@fontsource/press-start-2p`).
