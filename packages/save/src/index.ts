@@ -1,5 +1,5 @@
-export * from "./store";
-export * from "./manager";
+export * from "./store.js";
+export * from "./manager.js";
 
 /** Coalesce frequent changes into one write after `ms` of quiet. */
 export function createAutosaver(write: () => Promise<unknown>, ms = 300) {

@@ -1,4 +1,4 @@
-import type { Rand } from "./util";
+import type { Rand } from "./util.js";
 
 // ---------------------------------------------------------------- Elo
 

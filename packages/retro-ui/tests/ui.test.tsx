@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { render } from "preact";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { Button, Choice, configureUi, ConfirmDialog, gradeFromOffset, Meter, money, plural, simulateGrade, Tabs, TimingBar } from "../src";
+import { Button, Choice, configureUi, ConfirmDialog, gradeFromOffset, Meter, money, plural, simulateGrade, Tabs, TimingBar } from "../src/index.js";
 
 afterEach(() => {
   document.body.innerHTML = "";

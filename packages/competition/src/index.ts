@@ -1,8 +1,8 @@
-export * from "./knockout";
-export * from "./league";
-export * from "./groups";
-export * from "./pyramid";
-export * from "./swiss";
-export * from "./ratings";
-export * from "./ranking";
-export { shuffle, type Rand } from "./util";
+export * from "./knockout.js";
+export * from "./league.js";
+export * from "./groups.js";
+export * from "./pyramid.js";
+export * from "./swiss.js";
+export * from "./ratings.js";
+export * from "./ranking.js";
+export { shuffle, type Rand } from "./util.js";

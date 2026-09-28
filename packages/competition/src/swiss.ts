@@ -1,5 +1,5 @@
-import type { Fixture } from "./league";
-import { shuffle, type Rand } from "./util";
+import type { Fixture } from "./league.js";
+import { shuffle, type Rand } from "./util.js";
 
 export interface SwissOptions<T> {
   /** Opponents drawn from every pot (default 2: one at home, one away). */

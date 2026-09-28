@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { band, nudge, settle, type Meters } from "../src";
+import { band, nudge, settle, type Meters } from "../src/index.js";
 
 type Who = "coach" | "fans" | "agent";
 

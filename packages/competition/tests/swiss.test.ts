@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { swissDraw, type Fixture } from "../src";
+import { swissDraw, type Fixture } from "../src/index.js";
 
 function mulberry32(seed: number) {
   let a = seed >>> 0;

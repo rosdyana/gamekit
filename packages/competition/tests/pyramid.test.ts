@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { allocate, promoteRelegate } from "../src";
+import { allocate, promoteRelegate } from "../src/index.js";
 
 describe("promoteRelegate", () => {
   const tiers = [

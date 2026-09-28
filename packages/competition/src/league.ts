@@ -1,4 +1,4 @@
-import { shuffle, type Rand } from "./util";
+import { shuffle, type Rand } from "./util.js";
 
 export interface Fixture<T> {
   home: T;

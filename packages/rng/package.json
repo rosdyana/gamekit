@@ -1,6 +1,6 @@
 {
   "name": "@taipeistudio/gamekit-rng",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Seeded, serialisable random numbers: the state lives in your save file.",
   "keywords": [
     "gamekit",

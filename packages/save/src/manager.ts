@@ -1,4 +1,4 @@
-import type { Store } from "./store";
+import type { Store } from "./store.js";
 
 export type Migration = (state: Record<string, unknown>) => void;
 

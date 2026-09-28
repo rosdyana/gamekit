@@ -1,6 +1,6 @@
 {
   "name": "@taipeistudio/gamekit-competition",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Sports competition engine: brackets, leagues, groups, two-legged ties, rolling rankings, Elo.",
   "keywords": [
     "gamekit",

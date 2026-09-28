@@ -1,6 +1,6 @@
 import "fake-indexeddb/auto";
 import { describe, expect, it, vi } from "vitest";
-import { autoSlot, createAutosaver, manualSlot, memoryStore, migrateState, openStore, SaveManager } from "../src";
+import { autoSlot, createAutosaver, manualSlot, memoryStore, migrateState, openStore, SaveManager } from "../src/index.js";
 
 interface Game {
   version: number;

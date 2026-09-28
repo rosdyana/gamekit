@@ -1,5 +1,5 @@
-import { roundRobin, standings, table, type Fixture, type PointsRule, type Row, type Table, type Tiebreak } from "./league";
-import { shuffle, type Rand } from "./util";
+import { roundRobin, standings, table, type Fixture, type PointsRule, type Row, type Table, type Tiebreak } from "./league.js";
+import { shuffle, type Rand } from "./util.js";
 
 /**
  * Draw pots into groups (World Cup / Champions League style): each pot puts

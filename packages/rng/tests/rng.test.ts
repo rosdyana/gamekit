@@ -12,7 +12,7 @@ import {
   pick,
   pickWeighted,
   shuffle,
-} from "../src";
+} from "../src/index.js";
 
 describe("rng", () => {
   it("replays identically from a serialised holder", () => {

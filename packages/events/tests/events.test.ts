@@ -14,7 +14,7 @@ import {
   weekOfYear,
   yearOf,
   type EventDef,
-} from "../src";
+} from "../src/index.js";
 
 interface State {
   money: number;

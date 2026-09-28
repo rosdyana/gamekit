@@ -1,6 +1,6 @@
 {
   "name": "@taipeistudio/gamekit-save",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Save slots, autosave, versioned migrations, export/import and record collections over IndexedDB/localStorage.",
   "keywords": [
     "gamekit",

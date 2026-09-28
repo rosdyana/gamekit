@@ -1,3 +1,3 @@
-export * from "./deck";
-export * from "./meters";
-export * from "./time";
+export * from "./deck.js";
+export * from "./meters.js";
+export * from "./time.js";
