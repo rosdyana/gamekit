@@ -6,3 +6,6 @@ export * from "./swiss.js";
 export * from "./ratings.js";
 export * from "./ranking.js";
 export { shuffle, type Rand } from "./util.js";
+export * from "./series.js";
+export * from "./schedule.js";
+export * from "./draft.js";

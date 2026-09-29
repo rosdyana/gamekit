@@ -1,7 +1,7 @@
 {
   "name": "gamekit",
   "private": true,
-  "description": "Reusable engines for our games: rng, saves, retro UI, competitions, life-sim events.",
+  "description": "Reusable engines for our games: rng, saves, retro UI, competitions, life-sim events, athlete careers.",
   "keywords": [
     "gamedev",
     "typescript",

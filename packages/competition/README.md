@@ -30,6 +30,20 @@ npm install @taipeistudio/gamekit-competition
 - **Results**: `expected`/`eloUpdate`/`eloWinner`, `poisson`, `scoreline` (football-like
   scores from two ratings, home edge), `twoLegs` (aggregate, then your decider),
   `penalties`.
+- **Series and play-in**: `series(a, b, bestOf, pattern)` (default 2-2-1-1-1 home court for
+  `a`; `HOME_2_3_2`), `nextGame`, `recordGame`, `playSeries(s, play)`, `seriesWinner`,
+  `seriesLoser`, `seriesStatus` ("A lead 3-1"), `playIn([s7, s8, s9, s10], play)`. Use
+  `playSeries` as the `decide` of `playRound` for a playoff bracket.
+- **Divisional schedules**: `planDivisional(shape, counts, rand)` (pair counts; `NBA_COUNTS`
+  gives 82 games for 2 x 3 x 5 teams), `gamesPerTeam`, `expandMatchups` (balanced home and
+  away), `scheduleDays(fixtures, rand, { days, noThreeInThree, load })` (one list per day, no
+  doubles, even spread), `backToBacks`. Win-loss tables: `table(teams, WIN_LOSS)`, `winPct`,
+  `gamesBehind`, `winLoss`.
+- **Drafts**: `draftLottery(worstFirst, rand, odds, drawn)` (`NBA_LOTTERY_ODDS`, weighted
+  draws without replacement, reports jumps), `draftOrder(firstRound, rounds, laterRounds,
+  owner)` (traded picks), `runDraft(picks, board, pick)`.
+- **High scores**: `highScore(rand, ra, rb, { avgPoints, spread, perPoint, homeEdge,
+  overtime })` returns `[a, b, overtimes]`, never tied (basketball, handball).
 - **Rankings**: `rank(entries, now, { window, best, include })` (rolling best-N, e.g.
   52 weeks / best 10), `prune`, `memoRanking`, `TOUR_SHARES` (points/prize by round).
 

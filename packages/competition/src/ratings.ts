@@ -49,6 +49,45 @@ export function scoreline(rand: Rand, ra: number, rb: number, o: ScoreOptions = 
   return [poisson(rand, a), poisson(rand, b)];
 }
 
+export interface HighScoreOptions {
+  /** Average points per team in an even game (NBA ≈ 114, FIBA ≈ 80). */
+  avgPoints?: number;
+  /** Standard deviation of one team's score. */
+  spread?: number;
+  /** Rating points per point of expected margin (Elo-like; 28 ≈ one point per 28 Elo). */
+  perPoint?: number;
+  /** Home advantage in rating points. */
+  homeEdge?: number;
+  /** Points per overtime period, on average, for each side. */
+  overtime?: number;
+}
+
+/**
+ * A plausible high-scoring, no-tie scoreline (basketball, handball) from two ratings:
+ * normal noise around the average, the rating gap shifts the margin, ties go to overtime.
+ * Returns [a, b, overtimes].
+ */
+export function highScore(rand: Rand, ra: number, rb: number, o: HighScoreOptions = {}): [number, number, number] {
+  const avg = o.avgPoints ?? 112;
+  const sd = o.spread ?? 11;
+  const margin = (ra + (o.homeEdge ?? 0) - rb) / (o.perPoint ?? 28);
+  const n = () => (rand() + rand() + rand() + rand() - 2) * Math.sqrt(3) * sd;
+  let a = Math.round(avg + margin / 2 + n());
+  let b = Math.round(avg - margin / 2 + n());
+  let ots = 0;
+  const ot = o.overtime ?? 10;
+  const m = expected(ra + (o.homeEdge ?? 0), rb);
+  while (a === b && ots < 6) {
+    ots++;
+    const base = Math.round(ot * (0.7 + rand() * 0.6));
+    const d = rand() < m ? 1 : -1;
+    const gap = 1 + Math.floor(rand() * 6);
+    a += base + (d > 0 ? gap : 0);
+    b += base + (d < 0 ? gap : 0);
+  }
+  return [Math.max(0, a), Math.max(0, b), ots];
+}
+
 // ---------------------------------------------------------------- two legs
 
 export interface Leg {

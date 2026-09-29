@@ -4,7 +4,7 @@
 
 **Small, focused TypeScript engines for browser games.**
 
-Seeded randomness · save systems · retro UI · sports competitions · life-sim events
+Seeded randomness · save systems · retro UI · sports competitions · life-sim events · athlete careers
 
 [![license](https://img.shields.io/badge/license-MIT%20with%20attribution-blue.svg)](LICENSE)
 [![types](https://img.shields.io/badge/types-TypeScript-3178c6.svg)](https://www.typescriptlang.org/)
@@ -14,7 +14,7 @@ Seeded randomness · save systems · retro UI · sports competitions · life-sim
 
 ---
 
-gamekit is a monorepo of five independent packages extracted from shipped games. Each package
+gamekit is a monorepo of six independent packages extracted from shipped games. Each package
 does one job, has no dependency on the others, and keeps its state as plain, serialisable data
 so it drops straight into a save file. Anything random takes a `rand: () => number`, so every
 simulation can be replayed from a seed.
@@ -26,8 +26,9 @@ simulation can be replayed from a seed.
 | [`@taipeistudio/gamekit-rng`](packages/rng) | [![npm](https://img.shields.io/npm/v/@taipeistudio/gamekit-rng.svg)](https://www.npmjs.com/package/@taipeistudio/gamekit-rng) | Seeded RNG whose state lives in your save (replays exactly); chance, int, pick, weighted pick, shuffle, gauss, string hash |
 | [`@taipeistudio/gamekit-save`](packages/save) | [![npm](https://img.shields.io/npm/v/@taipeistudio/gamekit-save.svg)](https://www.npmjs.com/package/@taipeistudio/gamekit-save) | IndexedDB/localStorage stores, autosave and manual slots, versioned migrations, export/import, record collections, settings, debounced autosaver |
 | [`@taipeistudio/gamekit-retro-ui`](packages/retro-ui) | [![npm](https://img.shields.io/npm/v/@taipeistudio/gamekit-retro-ui.svg)](https://www.npmjs.com/package/@taipeistudio/gamekit-retro-ui) | Pixel-style Preact kit and stylesheet: panels, buttons, chips, cards, meters, tabs, modals, toasts, 16:9 stage, timing-bar minigame |
-| [`@taipeistudio/gamekit-competition`](packages/competition) | [![npm](https://img.shields.io/npm/v/@taipeistudio/gamekit-competition.svg)](https://www.npmjs.com/package/@taipeistudio/gamekit-competition) | Knockouts, round-robin fixtures, league tables with tiebreaks, constrained group draws, Swiss league phase, promotion/relegation, two-legged ties, penalties, Elo, Poisson scorelines, rolling rankings |
+| [`@taipeistudio/gamekit-competition`](packages/competition) | [![npm](https://img.shields.io/npm/v/@taipeistudio/gamekit-competition.svg)](https://www.npmjs.com/package/@taipeistudio/gamekit-competition) | Knockouts, round-robin fixtures, league tables with tiebreaks, constrained group draws, Swiss league phase, promotion/relegation, two-legged ties, penalties, best-of-N series, play-in, divisional schedules with back-to-backs, draft lottery, Elo, Poisson and high scorelines, rolling rankings |
 | [`@taipeistudio/gamekit-events`](packages/events) | [![npm](https://img.shields.io/npm/v/@taipeistudio/gamekit-events.svg)](https://www.npmjs.com/package/@taipeistudio/gamekit-events) | Life-sim event deck (weighted, conditional, cooldowns, once-only, scheduled, choices with tags), calendar/season/age helpers, curves, named meters |
+| [`@taipeistudio/gamekit-career`](packages/career) | [![npm](https://img.shields.io/npm/v/@taipeistudio/gamekit-career.svg)](https://www.npmjs.com/package/@taipeistudio/gamekit-career) | Athlete-career economy: money helpers, taxes, currency, savings/index/crypto/property/business portfolio with weekly markets, sponsors with image clauses, fame and followers, lifestyle ladders, tiers |
 
 Looking for sprites? The companion library [**pixel-rig**](https://github.com/rosdyana/pixel-rig)
 draws procedural, animated pixel-art characters.
@@ -38,6 +39,7 @@ Install only the packages you need:
 
 ```bash
 npm install @taipeistudio/gamekit-rng @taipeistudio/gamekit-save @taipeistudio/gamekit-competition @taipeistudio/gamekit-events
+npm install @taipeistudio/gamekit-career
 npm install @taipeistudio/gamekit-retro-ui preact   # UI kit (Preact is a peer dependency)
 ```
 
