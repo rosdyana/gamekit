@@ -1,0 +1,49 @@
+{
+  "name": "@taipeistudio/gamekit-sfx",
+  "version": "0.1.0",
+  "description": "Synthesised game sound on WebAudio: data-driven one-shot cues and continuous voices, no audio files.",
+  "keywords": [
+    "gamekit",
+    "gamedev",
+    "typescript",
+    "webaudio",
+    "sound",
+    "sfx",
+    "chiptune",
+    "synth"
+  ],
+  "author": {
+    "name": "Rosdyana Kusuma",
+    "email": "rosdyana.kusuma@gmail.com",
+    "url": "https://github.com/rosdyana"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/rosdyana/gamekit/tree/main/packages/sfx#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosdyana/gamekit.git",
+    "directory": "packages/sfx"
+  },
+  "bugs": {
+    "url": "https://github.com/rosdyana/gamekit/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
